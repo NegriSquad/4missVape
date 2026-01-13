@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Схема подключения - 4missVape</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-microchip"></i> 4missVape
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                <li><a href="download.html"><i class="fas fa-download"></i> Скачать</a></li>
+                <li><a href="scheme.html" class="active"><i class="fas fa-project-diagram"></i> Схема</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> О проекте</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-project-diagram"></i> Схема подключения</h1>
+            <p>Полная электрическая схема подключения компонентов Bruce прошивки</p>
+        </div>
+    </section>
+
+    <section class="scheme">
+        <div class="container">
+            <div class="scheme-container">
+                <div class="scheme-image">
+                    <div class="circuit-diagram">
+                        <!-- Это условное изображение схемы -->
+                        <div class="component esp32">
+                            <div class="comp-label">ESP32</div>
+                            <div class="pins">
+                                <div class="pin" data-pin="3V3">3.3V</div>
+                                <div class="pin" data-pin="GND">GND</div>
+                                <div class="pin" data-pin="SDA">SDA (21)</div>
+                                <div class="pin" data-pin="SCL">SCL (22)</div>
+                                <div class="pin" data-pin="BTN1">BTN1 (32)</div>
+                                <div class="pin" data-pin="BTN2">BTN2 (33)</div>
+                                <div class="pin" data-pin="BTN3">BTN3 (25)</div>
+                                <div class="pin" data-pin="BTN4">BTN4 (26)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="wires">
+                            <div class="wire power"></div>
+                            <div class="wire i2c"></div>
+                            <div class="wire buttons"></div>
+                        </div>
+                        
+                        <div class="component oled">
+                            <div class="comp-label">OLED 0.96"</div>
+                            <div class="pins">
+                                <div class="pin" data-pin="VCC">VCC</div>
+                                <div class="pin" data-pin="GND">GND</div>
+                                <div class="pin" data-pin="SDA">SDA</div>
+                                <div class="pin" data-pin="SCL">SCL</div>
+                            </div>
+                        </div>
+                        
+                        <div class="component buttons-comp">
+                            <div class="comp-label">Кнопки x4</div>
+                            <div class="pins">
+                                <div class="pin" data-pin="UP">UP</div>
+                                <div class="pin" data-pin="DOWN">DOWN</div>
+                                <div class="pin" data-pin="LEFT">LEFT</div>
+                                <div class="pin" data-pin="RIGHT">RIGHT</div>
+                                <div class="pin" data-pin="COM">GND</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scheme-caption">
+                        <p>Схема подключения ESP32, OLED дисплея и кнопок управления</p>
+                    </div>
+                </div>
+
+                <div class="pinout-table">
+                    <h3><i class="fas fa-table"></i> Распиновка ESP32</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Пин ESP32</th>
+                                <th>Подключение</th>
+                                <th>Назначение</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="pin-label">3.3V</span></td>
+                                <td>OLED VCC, Кнопки (через резисторы)</td>
+                                <td>Питание 3.3В</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pin-label">GND</span></td>
+                                <td>OLED GND, Кнопки общий</td>
+                                <td>Земля</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pin-label">GPIO 21</span></td>
+                                <td>OLED SDA</td>
+                                <td>Данные I2C</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pin-label">GPIO 22</span></td>
+                                <td>OLED SCL</td>
+                                <td>Тактовый I2C</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pin-label">GPIO 32</span></td>
+                                <td>Кнопка UP</td>
+                                <td>Вверх в меню</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pin-label">GPIO 33</span></td>
+                                <td>Кнопка DOWN</td>
+                                <td>Вниз в меню</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pin-label">GPIO 25</span></td>
+                                <td>Кнопка LEFT</td>
+                                <td>Назад/Отмена</td>
+                            </tr>
+                            <tr>
+                                <td><span class="pin-label">GPIO 26</span></td>
+                                <td>Кнопка RIGHT</td>
+                                <td>Выбор/Ввод</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="connection-guide">
+                <h2><i class="fas fa-plug"></i> Подробное подключение</h2>
+                
+                <div class="guide-step">
+                    <h3>1. Подключение OLED дисплея</h3>
+                    <div class="step-content">
+                        <div class="step-image">I2C</div>
+                        <div class="step-text">
+                            <p>OLED дисплей подключается по интерфейсу I2C:</p>
+                            <ul>
+                                <li><strong>OLED VCC</strong> → <strong>ESP32 3.3V</strong> (питание)</li>
+                                <li><strong>OLED GND</strong> → <strong>ESP32 GND</strong> (земля)</li>
+                                <li><strong>OLED SDA</strong> → <strong>ESP32 GPIO 21</strong> (данные)</li>
+                                <li><strong>OLED SCL</strong> → <strong>ESP32 GPIO 22</strong> (такты)</li>
+                            </ul>
+                            <p class="note"><i class="fas fa-info-circle"></i> Адрес дисплея по умолчанию: 0x3C</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <h3>2. Подключение кнопок</h3>
+                    <div class="step-content">
+                        <div class="step-image">BTN</div>
+                        <div class="step-text">
+                            <p>Кнопки подключаются с подтягивающими резисторами 10кОм:</p>
+                            <ul>
+                                <li>Один контакт кнопки → GPIO пину ESP32</li>
+                                <li>Второй контакт → GND (через резистор)</li>
+                                <li>GPIO пин → 3.3V через 10кОм резистор (подтяжка к питанию)</li>
+                            </ul>
+                            <div class="code-block">
+                                <code>// Конфигурация кнопок в коде
+#define BTN_UP 32     // GPIO 32
+#define BTN_DOWN 33   // GPIO 33  
+#define BTN_LEFT 25   // GPIO 25
+#define BTN_RIGHT 26  // GPIO 26</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-step">
+                    <h3>3. Питание системы</h3>
+                    <div class="step-content">
+                        <div class="step-image">PWR</div>
+                        <div class="step-text">
+                            <p>Рекомендуемая схема питания:</p>
+                            <ul>
+                                <li>Используйте стабилизированный источник 3.3V</li>
+                                <li>Добавьте конденсатор 100μF для фильтрации</li>
+                                <li>Для батарейного питания добавьте защиту от глубокого разряда</li>
+                                <li>Максимальный ток: 500mA</li>
+                            </ul>
+                            <p class="warning"><i class="fas fa-exclamation-triangle"></i> Не подавайте на ESP32 напряжение выше 3.6V!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="components-list">
+                <h2><i class="fas fa-clipboard-list"></i> Необходимые компоненты</h2>
+                <div class="components-grid">
+                    <div class="component-item">
+                        <div class="comp-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h4>ESP32 Dev Board</h4>
+                        <p>Модуль ESP32-WROOM-32</p>
+                        <span class="comp-qty">1 шт</span>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h4>OLED дисплей</h4>
+                        <p>0.96", 128x64, I2C</p>
+                        <span class="comp-qty">1 шт</span>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">
+                            <i class="fas fa-toggle-on"></i>
+                        </div>
+                        <h4>Тактовые кнопки</h4>
+                        <p>6x6 мм, 4 контакта</p>
+                        <span class="comp-qty">4 шт</span>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">
+                            <i class="fas fa-resistance"></i>
+                        </div>
+                        <h4>Резисторы 10кОм</h4>
+                        <p>Для подтяжки кнопок</p>
+                        <span class="comp-qty">4 шт</span>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h4>Провода</h4>
+                        <p>Муж-муж, муж-жен</p>
+                        <span class="comp-qty">20 шт</span>
+                    </div>
+                    <div class="component-item">
+                        <div class="comp-icon">
+                            <i class="fas fa-bread-slice"></i>
+                        </div>
+                        <h4>Макетная плата</h4>
+                        <p>400 точек</p>
+                        <span class="comp-qty">1 шт</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="troubleshooting">
+                <h2><i class="fas fa-wrench"></i> Решение проблем</h2>
+                <div class="problems">
+                    <div class="problem">
+                        <h4>Дисплей не включается</h4>
+                        <p>Проверьте подключение I2C, адрес 0x3C, питание 3.3V</p>
+                    </div>
+                    <div class="problem">
+                        <h4>Кнопки не работают</h4>
+                        <p>Проверьте подтягивающие резисторы, номера пинов в коде</p>
+                    </div>
+                    <div class="problem">
+                        <h4>ESP32 не прошивается</h4>
+                        <p>Зажмите BOOT кнопку при загрузке, проверьте драйверы CH340</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>4missVape Project</h3>
+                    <p>Подробные схемы и инструкции</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Дополнительно</h3>
+                    <ul>
+                        <li><a href="download.html">Скачать прошивку</a></li>
+                        <li><a href="about.html">Документация</a></li>
+                        <li><a href="#">Форум обсуждения</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 4missVape Bruce Project | Схемы могут меняться</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
