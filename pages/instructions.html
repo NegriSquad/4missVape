@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция - 4missVape</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Дополнительные стили для инструкции */
+        .instructions-hero {
+            padding: 150px 0 50px;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--darker-color), var(--dark-color));
+        }
+        
+        .steps-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            counter-increment: step-counter;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            color: var(--light-color);
+        }
+        
+        .step-content {
+            margin-bottom: 20px;
+        }
+        
+        .step-content p {
+            margin-bottom: 15px;
+            color: var(--gray-color);
+        }
+        
+        .warning-box {
+            background-color: rgba(255, 71, 87, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .warning-box h4 {
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .warning-box i {
+            margin-right: 10px;
+        }
+        
+        .tip-box {
+            background-color: rgba(46, 213, 115, 0.1);
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .tip-box h4 {
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .tip-box i {
+            margin-right: 10px;
+        }
+        
+        .tools-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .tool-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .faq-container {
+            margin-top: 50px;
+        }
+        
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .instructions-counter {
+            counter-reset: step-counter;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-fire"></i>
+                    <span>4missVape</span>
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="../index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="download.html"><i class="fas fa-download"></i> Скачать</a></li>
+                    <li><a href="instructions.html" class="active"><i class="fas fa-book"></i> Инструкция</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+                    <li><a href="../index.html#contacts"><i class="fas fa-envelope"></i> Контакты</a></li>
+                </ul>
+                
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="instructions-hero">
+        <div class="container">
+            <h1 class="section-title">Инструкция по <span class="highlight">установке</span></h1>
+            <p class="download-subtitle">Подробное руководство по прошивке вашего устройства</p>
+        </div>
+    </section>
+
+    <section class="instructions">
+        <div class="container">
+            <div class="instructions-counter">
+                <div class="steps-container">
+                    <!-- Шаг 1 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <h3 class="step-title">Подготовка и скачивание</h3>
+                        </div>
+                        <div class="step-content">
+                            <p>Перед началом прошивки необходимо подготовить все необходимое:</p>
+                            
+                            <div class="tools-list">
+                                <div class="tool-item">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-laptop"></i>
+                                    </div>
+                                    <h4>Компьютер</h4>
+                                    <p>Windows 7/10/11, macOS или Linux</p>
+                                </div>
+                                
+                                <div class="tool-item">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-usb"></i>
+                                    </div>
+                                    <h4>USB-кабель</h4>
+                                    <p>Оригинальный кабель от устройства</p>
+                                </div>
+                                
+                                <div class="tool-item">
+                                    <div class="tool-icon">
+                                        <i class="fas fa-battery-full"></i>
+                                    </div>
+                                    <h4>Заряд батареи</h4>
+                                    <p>Не менее 50% заряда</p>
+                                </div>
+                            </div>
+                            
+                            <p>Скачайте следующие файлы со страницы <a href="download.html" style="color: var(--primary-color);">загрузок</a>:</p>
+                            <ul style="color: var(--gray-color); margin-left: 20px; margin-bottom: 20px;">
+                                <li>Прошивка 4missVape (файл .bin)</li>
+                                <li>Утилита 4missTools для вашей ОС</li>
+                                <li>Драйверы USB (если потребуется)</li>
+                            </ul>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> Совет</h4>
+                                <p>Создайте отдельную папку на рабочем столе для всех файлов прошивки, чтобы не потерять их.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Шаг 2 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="step-title">Установка драйверов и утилит</h3>
+                        </div>
+                        <div class="step-content">
+                            <p>Для корректной работы необходимо установить драйверы и утилиту прошивки:</p>
+                            
+                            <ol style="color: var(--gray-color); margin-left: 20px; margin-bottom: 20px;">
+                                <li>Распакуйте архив с 4missTools в удобную папку</li>
+                                <li>Запустите установку драйверов (файл Install_Drivers.exe для Windows)</li>
+                                <li>При подключении устройства к ПК система может запросить установку драйверов - разрешите это</li>
+                                <li>Убедитесь, что устройство определяется в системе как COM-порт или съемный диск</li>
+                            </ol>
+                            
+                            <div class="warning-box">
+                                <h4><i class="fas fa-exclamation-triangle"></i> Внимание</h4>
+                                <p>Отключите антивирус на время установки драйверов, так как некоторые антивирусы могут блокировать установку драйверов для устройств вейпа.</p>
+                            </div>
+                            
+                            <p>После установки драйверов подключите ваше вейп-устройство к компьютеру с помощью USB-кабеля.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Шаг 3 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-backup"></i>
+                            </div>
+                            <h3 class="step-title">Создание резервной копии</h3>
+                        </div>
+                        <div class="step-content">
+                            <p>Перед прошивкой ОБЯЗАТЕЛЬНО сделайте резервную копию оригинальной прошивки:</p>
+                            
+                            <ol style="color: var(--gray-color); margin-left: 20px; margin-bottom: 20px;">
+                                <li>Запустите программу 4missTools</li>
+                                <li>В главном меню выберите "Backup Firmware"</li>
+                                <li>Выберите порт, к которому подключено устройство (например, COM3)</li>
+                                <li>Нажмите "Read Flash" и сохраните файл с расширением .bin</li>
+                                <li>Назовите файл понятно, например: "Original_Firmware_Vaporesso_Luxe.bin"</li>
+                            </ol>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> Важно</h4>
+                                <p>Сохраните резервную копию в нескольких местах (на ПК, в облаке, на флешке). В случае проблем с кастомной прошивкой вы сможете восстановить оригинальную.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Шаг 4 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                            <h3 class="step-title">Прошивка устройства</h3>
+                        </div>
+                        <div class="step-content">
+                            <p>Теперь приступим к установке 4missVape:</p>
+                            
+                            <ol style="color: var(--gray-color); margin-left: 20px; margin-bottom: 20px;">
+                                <li>В программе 4missTools выберите "Flash Firmware"</li>
+                                <li>Нажмите "Browse" и выберите скачанный файл прошивки 4missVape.bin</li>
+                                <li>Убедитесь, что выбран правильный COM-порт</li>
+                                <li>Нажмите "Upload" и дождитесь завершения процесса</li>
+                                <li>Не отключайте устройство во время прошивки!</li>
+                                <li>После завершения программа сообщит "Flash Complete"</li>
+                            </ol>
+                            
+                            <div class="warning-box">
+                                <h4><i class="fas fa-exclamation-triangle"></i> Критически важно</h4>
+                                <p>Не отключайте устройство от компьютера и не нажимайте никакие кнопки на устройстве во время прошивки. Это может привести к "брикованию" устройства (полной неработоспособности).</p>
+                            </div>
+                            
+                            <p>После успешной прошивки отсоедините устройство от компьютера.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Шаг 5 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3 class="step-title">Настройка и калибровка</h3>
+                        </div>
+                        <div class="step-content">
+                            <p>После прошивки выполните первоначальную настройку:</p>
+                            
+                            <ol style="color: var(--gray-color); margin-left: 20px; margin-bottom: 20px;">
+                                <li>Включите устройство (5 кликов по кнопке fire)</li>
+                                <li>Перейдите в меню настроек (3 клика по кнопке fire)</li>
+                                <li>Выполните калибровку батареи: "Settings" → "Battery Calibration"</li>
+                                <li>Настройте предпочтительный режим работы (Power, TC, TCR)</li>
+                                <li>Отрегулируйте яркость дисплея под свои предпочтения</li>
+                                <li>Проверьте чтение сопротивления спирали</li>
+                            </ol>
+                            
+                            <div class="tip-box">
+                                <h4><i class="fas fa-lightbulb"></i> Рекомендация</h4>
+                                <p>Для первого запуска установите минимальную мощность (10-15W) и постепенно увеличивайте до комфортного значения, чтобы избежать "горячих" затяжек.</p>
+                            </div>
+                            
+                            <p>Теперь ваше устройство готово к использованию с новой прошивкой 4missVape!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Видео-инструкция -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Видео инструкция по прошивке 4missVape" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <!-- FAQ -->
+                <div class="faq-container">
+                    <h2 class="section-title">Частые <span class="highlight">вопросы</span></h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Что делать, если устройство не определяется компьютером?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. Попробуйте другой USB-порт (желательно USB 2.0).<br>
+                            2. Используйте оригинальный USB-кабель.<br>
+                            3. Переустановите драйверы.<br>
+                            4. Проверьте, включено ли устройство (иногда нужно включить его 5 кликами).<br>
+                            5. На некоторых устройствах нужно зажать определенные кнопки при подключении.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Прошивка зависла на 50%, что делать?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Не отключайте устройство! Подождите 5-10 минут. Если процесс не продолжается:<br>
+                            1. Закройте программу 4missTools.<br>
+                            2. Отключите и снова подключите устройство.<br>
+                            3. Перезапустите 4missTools и попробуйте прошить снова.<br>
+                            4. Если не помогает, восстановите оригинальную прошивку из резервной копии.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>После прошивки устройство не включается</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>1. Убедитесь, что батарея заряжена.<br>
+                            2. Попробуйте подключить к зарядке на 30 минут.<br>
+                            3. Выполните сброс до заводских настроек (обычно кнопки "+" и "-" при включении).<br>
+                            4. Если ничего не помогает, восстановите оригинальную прошивку.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Можно ли вернуть оригинальную прошивку?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, именно для этого мы делали резервную копию. В программе 4missTools выберите файл с оригинальной прошивкой и прошейте его тем же способом, что и кастомную прошивку. Все настройки и данные будут восстановлены.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Поддерживает ли прошивка русский язык?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, начиная с версии 2.0, 4missVape поддерживает русский и английский языки. Сменить язык можно в меню: "Settings" → "Language" → "Russian".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>4missVape</h3>
+                    <p>Кастомная прошивка для вейп-устройств с дисплеем ILI9341. Улучшите возможности вашего устройства!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="../index.html">Главная</a></li>
+                        <li><a href="download.html">Скачать прошивку</a></li>
+                        <li><a href="instructions.html">Инструкция</a></li>
+                        <li><a href="gallery.html">Галерея</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@4missvape.ru</li>
+                        <li><i class="fas fa-comments"></i> Telegram-чат</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Использование на ваш риск</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 4missVape Project. Все права защищены. This site is not affiliated with any vape manufacturers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // FAQ аккордеон
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
