@@ -15,10 +15,16 @@
             background: linear-gradient(to bottom, var(--darker-color), var(--dark-color));
         }
         
+        .gallery-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-color);
+            margin-top: 20px;
+        }
+        
         .gallery-tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
+            margin: 40px 0;
             flex-wrap: wrap;
             gap: 10px;
         }
@@ -31,6 +37,7 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 500;
+            color: var(--gray-color);
         }
         
         .gallery-tab:hover, .gallery-tab.active {
@@ -43,7 +50,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 50px;
+            margin: 30px 0;
         }
         
         .gallery-item {
@@ -51,7 +58,7 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         }
         
         .gallery-item:hover {
@@ -96,6 +103,7 @@
             color: var(--gray-color);
             font-size: 0.95rem;
             margin-bottom: 15px;
+            line-height: 1.5;
         }
         
         .gallery-meta {
@@ -107,6 +115,7 @@
             padding-top: 15px;
         }
         
+        /* Стили для демонстрации устройств */
         .device-showcase {
             margin: 60px 0;
         }
@@ -119,16 +128,33 @@
             align-items: center;
             margin-bottom: 30px;
             border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+        
+        .device-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
         }
         
         .device-image {
             flex: 0 0 150px;
             margin-right: 30px;
+            background-color: #0a0a0a;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .device-image img {
-            width: 100%;
-            border-radius: 8px;
+            max-width: 100%;
+            max-height: 130px;
+            border-radius: 4px;
+        }
+        
+        .device-content {
+            flex: 1;
         }
         
         .device-content h3 {
@@ -140,6 +166,7 @@
         .device-content p {
             color: var(--gray-color);
             margin-bottom: 15px;
+            line-height: 1.6;
         }
         
         .device-features {
@@ -156,6 +183,7 @@
             font-size: 0.9rem;
         }
         
+        /* Стили для видео галереи */
         .video-gallery {
             margin: 60px 0;
         }
@@ -171,6 +199,12 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
         }
         
         .video-thumbnail {
@@ -178,12 +212,14 @@
             width: 100%;
             height: 180px;
             overflow: hidden;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
         }
         
         .video-thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0.7;
         }
         
         .play-button {
@@ -193,18 +229,20 @@
             transform: translate(-50%, -50%);
             width: 60px;
             height: 60px;
-            background-color: rgba(255, 71, 87, 0.8);
+            background-color: rgba(255, 71, 87, 0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            color: white;
         }
         
         .play-button:hover {
             background-color: var(--primary-color);
+            transform: translate(-50%, -50%) scale(1.1);
         }
         
         .video-info {
@@ -220,8 +258,144 @@
         .video-description {
             color: var(--gray-color);
             font-size: 0.95rem;
+            line-height: 1.5;
         }
         
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Стили для темы оформления */
+        .theme-showcase {
+            margin: 60px 0;
+        }
+        
+        .theme-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .theme-header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .theme-header h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+        
+        .theme-preview {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .theme-screenshots {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .theme-screenshot {
+            width: 200px;
+            height: 120px;
+            background-color: #000;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .theme-screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .theme-features {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .theme-features ul {
+            color: var(--gray-color);
+            padding-left: 20px;
+        }
+        
+        .theme-features li {
+            margin-bottom: 8px;
+        }
+        
+        /* Модальное окно для изображений */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+        }
+        
+        .modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Адаптивность */
         @media (max-width: 768px) {
             .device-card {
                 flex-direction: column;
@@ -232,6 +406,36 @@
                 margin-right: 0;
                 margin-bottom: 20px;
                 flex: 0 0 auto;
+            }
+            
+            .gallery-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-tab {
+                width: 200px;
+                text-align: center;
+            }
+            
+            .theme-screenshots {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .theme-screenshot {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -265,7 +469,7 @@
     <section class="gallery-hero">
         <div class="container">
             <h1 class="section-title">Галерея <span class="highlight">4missVape</span></h1>
-            <p class="download-subtitle">Скриншоты интерфейса, фото устройств и видео демонстрации</p>
+            <p class="gallery-subtitle">Скриншоты интерфейса, фото устройств с прошивкой и видео демонстрации</p>
         </div>
     </section>
 
@@ -273,22 +477,36 @@
         <div class="container">
             <!-- Вкладки галереи -->
             <div class="gallery-tabs">
-                <div class="gallery-tab active" data-tab="screenshots">Скриншоты интерфейса</div>
-                <div class="gallery-tab" data-tab="devices">Устройства с прошивкой</div>
-                <div class="gallery-tab" data-tab="videos">Видео демонстрации</div>
+                <div class="gallery-tab active" data-tab="screenshots">Скриншоты</div>
+                <div class="gallery-tab" data-tab="devices">Устройства</div>
+                <div class="gallery-tab" data-tab="videos">Видео</div>
+                <div class="gallery-tab" data-tab="themes">Темы оформления</div>
             </div>
             
             <!-- Скриншоты интерфейса -->
             <div id="screenshots" class="gallery-tab-content active">
+                <h2 class="section-title">Скриншоты <span class="highlight">интерфейса</span></h2>
+                <p style="text-align: center; color: var(--gray-color); margin-bottom: 30px;">
+                    Интерфейс прошивки 4missVape на устройствах с дисплеем ILI9341
+                </p>
+                
                 <div class="gallery-grid">
                     <!-- Скриншот 1 -->
                     <div class="gallery-item">
                         <div class="gallery-image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23080811'/%3E%3Crect x='20' y='20' width='360' height='160' rx='10' fill='%23000000'/%3E%3Ctext x='200' y='60' font-family='monospace' font-size='24' fill='%2300aaff' text-anchor='middle'%3E4missVape 2.1%3C/text%3E%3Ctext x='200' y='100' font-family='monospace' font-size='18' fill='%232ed573' text-anchor='middle'%3E65W | 0.25Ω%3C/text%3E%3Ctext x='200' y='140' font-family='monospace' font-size='16' fill='%23ff4757' text-anchor='middle'%3EPOWER MODE%3C/text%3E%3C/svg%3E" alt="Главный экран">
+                            <div class="screenshot-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a0a, #1a1a1a);">
+                                <div style="text-align: center; color: #00aaff; font-family: 'Roboto Mono', monospace;">
+                                    <div style="font-size: 1.5rem; color: #ff4757; margin-bottom: 10px;">4missVape 2.1</div>
+                                    <div>Мощность: 65W</div>
+                                    <div>Сопротивление: 0.25Ω</div>
+                                    <div>Режим: POWER</div>
+                                    <div>Заряд: 85%</div>
+                                </div>
+                            </div>
                         </div>
                         <div class="gallery-info">
                             <h3 class="gallery-title">Главный экран</h3>
-                            <p class="gallery-description">Основной интерфейс прошивки с отображением мощности, сопротивления и режима работы.</p>
+                            <p class="gallery-description">Основной рабочий экран с отображением мощности, сопротивления, напряжения и заряда батареи. Темная тема с цветными акцентами.</p>
                             <div class="gallery-meta">
                                 <span>Тема: Dark</span>
                                 <span>Версия: 2.1</span>
@@ -299,4 +517,658 @@
                     <!-- Скриншот 2 -->
                     <div class="gallery-item">
                         <div class="gallery-image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23080811'/%3E%3Crect x='20' y='20' width='360' height='160' rx='10' fill='%23000000'/%3E%3Ctext x='200' y='50' font-family='monospace' font-size='22' fill='%2300aaff' text-anchor='middle'%3EНастройки%3C/text%3E%3Crect x='40' y='70' width='320' height='2' fill='%232a2a3e'/%3E%3Ctext x='50' y='100' font-family='monospace' font-size='16' fill='%23ffffff'%3EЯркость: ███████░░░%3C/text%3E%3Ctext x='50' y='125' font-family='monospace' font-size='16' fill='%23ffffff'%3EЯзык: Русский%3C/text%3E%3Ctext x='50' y='150' font-family='monospace' font-size='16' fill='%23ffffff'%3EТаймер: 10с%3C/text%3E%3Ctext x='50' y='175' font-family='monospace' font-size='
+                            <div class="screenshot-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a0a, #2a1a2a);">
+                                <div style="text-align: center; color: #2ed573; font-family: 'Roboto Mono', monospace;">
+                                    <div style="font-size: 1.5rem; color: #2ed573; margin-bottom: 10px;">Температура</div>
+                                    <div>Цель: 220°C</div>
+                                    <div>Текущая: 215°C</div>
+                                    <div>Мощность: 45W</div>
+                                    <div>Материал: SS316L</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3 class="gallery-title">Режим контроля температуры</h3>
+                            <p class="gallery-description">Интерфейс для точного контроля температуры с поддержкой различных материалов (SS, Ni, Ti, TCR). Зеленая цветовая схема.</p>
+                            <div class="gallery-meta">
+                                <span>Режим: TC</span>
+                                <span>Материал: SS316L</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Скриншот 3 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="screenshot-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a0a, #1a2a1a);">
+                                <div style="text-align: center; color: #ffa502; font-family: 'Roboto Mono', monospace;">
+                                    <div style="font-size: 1.5rem; color: #ffa502; margin-bottom: 10px;">Настройки</div>
+                                    <div>Яркость: ███████░░░</div>
+                                    <div>Язык: Русский</div>
+                                    <div>Таймер: 10с</div>
+                                    <div>Сброс: заводские</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3 class="gallery-title">Меню настроек</h3>
+                            <p class="gallery-description">Расширенные настройки прошивки: регулировка яркости, выбор языка, настройка таймера затяжки, калибровка и сброс.</p>
+                            <div class="gallery-meta">
+                                <span>Язык: RU</span>
+                                <span>Яркость: 70%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Скриншот 4 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="screenshot-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a0a, #2a2a1a);">
+                                <div style="text-align: center; color: #ff4757; font-family: 'Roboto Mono', monospace;">
+                                    <div style="font-size: 1.5rem; color: #ff4757; margin-bottom: 10px;">Игра: Змейка</div>
+                                    <div>Очки: 2450</div>
+                                    <div>Уровень: 7</div>
+                                    <div>Длина: 15</div>
+                                    <div>▄▄▄▄▄▄▄▄▄</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3 class="gallery-title">Встроенные игры</h3>
+                            <p class="gallery-description">Классическая игра "Змейка" и другие мини-игры для развлечения во время перерывов. Управление кнопками устройства.</p>
+                            <div class="gallery-meta">
+                                <span>Игра: Змейка</span>
+                                <span>Очки: 2450</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Скриншот 5 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="screenshot-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1a1a2e, #0a0a1a);">
+                                <div style="text-align: center; color: #a29bfe; font-family: 'Roboto Mono', monospace;">
+                                    <div style="font-size: 1.5rem; color: #a29bfe; margin-bottom: 10px;">Информация</div>
+                                    <div>Затяжки: 12458</div>
+                                    <div>Время: 15:42</div>
+                                    <div>Дата: 15.10.2023</div>
+                                    <div>Версия: 2.1</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3 class="gallery-title">Экран информации</h3>
+                            <p class="gallery-description">Статистика использования: счетчик затяжек, время работы, версия прошивки, системная информация. Пурпурная цветовая схема.</p>
+                            <div class="gallery-meta">
+                                <span>Затяжки: 12458</span>
+                                <span>Время: 15:42</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Скриншот 6 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <div class="screenshot-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2a1a1a, #0a0a0a);">
+                                <div style="text-align: center; color: #ff6b81; font-family: 'Roboto Mono', monospace;">
+                                    <div style="font-size: 1.5rem; color: #ff6b81; margin-bottom: 10px;">Кривые</div>
+                                    <div>Режим: CURVE</div>
+                                    <div>Точки: 5</div>
+                                    <div>Время: 3.5с</div>
+                                    <div>График: ▁▂▄▅▇</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3 class="gallery-title">Режим Power Curve</h3>
+                            <p class="gallery-description">Графическая настройка кривой мощности с 5 точками. Позволяет точно настроить подачу мощности во время затяжки.</p>
+                            <div class="gallery-meta">
+                                <span>Режим: Curve</span>
+                                <span>Точки: 5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Устройства с прошивкой -->
+            <div id="devices" class="gallery-tab-content" style="display: none;">
+                <h2 class="section-title">Устройства с <span class="highlight">прошивкой</span></h2>
+                <p style="text-align: center; color: var(--gray-color); margin-bottom: 30px;">
+                    Фотографии реальных устройств с установленной прошивкой 4missVape
+                </p>
+                
+                <div class="device-showcase">
+                    <!-- Устройство 1 -->
+                    <div class="device-card">
+                        <div class="device-image">
+                            <div style="width: 130px; height: 130px; background: linear-gradient(135deg, #333, #555); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                <div style="text-align: center; color: white; font-size: 0.9rem;">
+                                    VAPORESSO<br>LUXE
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-content">
+                            <h3>Vaporesso Luxe</h3>
+                            <p>Двухбатарейный мод с установленной прошивкой 4missVape 2.1. Полная поддержка всех режимов, включая температуру и кривые мощности. Яркий дисплей ILI9341 идеально подходит для кастомной прошивки.</p>
+                            <div class="device-features">
+                                <span class="device-feature">2x18650</span>
+                                <span class="device-feature">220W max</span>
+                                <span class="device-feature">ILI9341</span>
+                                <span class="device-feature">4missVape 2.1</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Устройство 2 -->
+                    <div class="device-card">
+                        <div class="device-image">
+                            <div style="width: 130px; height: 130px; background: linear-gradient(135deg, #444, #666); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                <div style="text-align: center; color: white; font-size: 0.9rem;">
+                                    VAPORESSO<br>GEN
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-content">
+                            <h3>Vaporesso Gen</h3>
+                            <p>Легендарный мод с обновленной прошивкой. Особенность - режим Pulse Mode, который стал еще лучше с 4missVape. Отзывчивый интерфейс и точный контроль температуры.</p>
+                            <div class="device-features">
+                                <span class="device-feature">2x18650</span>
+                                <span class="device-feature">220W max</span>
+                                <span class="device-feature">AXON Chip</span>
+                                <span class="device-feature">Pulse Mode</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Устройство 3 -->
+                    <div class="device-card">
+                        <div class="device-image">
+                            <div style="width: 130px; height: 130px; background: linear-gradient(135deg, #222, #444); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                <div style="text-align: center; color: white; font-size: 0.9rem;">
+                                    VANDY VAPE<br>PULSE
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-content">
+                            <h3>Vandy Vape Pulse V2</h3>
+                            <p>Сквиonk-мод с установленной прошивкой 4missVape 2.0. Идеально для любителей мех-модов с защитой. Улучшенный контроль мощности и возможность настройки под конкретный атомайзер.</p>
+                            <div class="device-features">
+                                <span class="device-feature">1x21700</span>
+                                <span class="device-feature">95W max</span>
+                                <span class="device-feature">Squonk</span>
+                                <span class="device-feature">Waterproof</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Устройство 4 -->
+                    <div class="device-card">
+                        <div class="device-image">
+                            <div style="width: 130px; height: 130px; background: linear-gradient(135deg, #555, #777); border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                <div style="text-align: center; color: white; font-size: 0.9rem;">
+                                    WISMEC<br>REULEAUX
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-content">
+                            <h3>Wismec Reuleaux RX Gen3</h3>
+                            <p>Трехбатарейный монстр с прошивкой 4missVape. Максимальная мощность и время работы. Идеально для любителей мощных затяжек и длительного использования без подзарядки.</p>
+                            <div class="device-features">
+                                <span class="device-feature">3x18650</span>
+                                <span class="device-feature">300W max</span>
+                                <span class="device-feature">Triple battery</span>
+                                <span class="device-feature">Long life</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Видео демонстрации -->
+            <div id="videos" class="gallery-tab-content" style="display: none;">
+                <h2 class="section-title">Видео <span class="highlight">демонстрации</span></h2>
+                <p style="text-align: center; color: var(--gray-color); margin-bottom: 30px;">
+                    Видеообзоры и инструкции по установке и использованию прошивки
+                </p>
+                
+                <div class="video-gallery">
+                    <div class="video-grid">
+                        <!-- Видео 1 -->
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #ff4757, #ff6b81); display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center; color: white; padding: 20px;">
+                                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                        <div>Установка 4missVape</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Установка прошивки 4missVape</h3>
+                                <p class="video-description">Полная инструкция по установке прошивки на Vaporesso Luxe. От создания резервной копии до настройки параметров.</p>
+                                <div class="video-meta">
+                                    <span>Время: 12:45</span>
+                                    <span>Просмотры: 24.5K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Видео 2 -->
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #2ed573, #7bed9f); display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center; color: white; padding: 20px;">
+                                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                        <div>Обзор функций</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Обзор всех функций 4missVape 2.1</h3>
+                                <p class="video-description">Детальный обзор всех режимов и функций новой версии прошивки. Режимы температуры, кривые мощности, игры и скрытые функции.</p>
+                                <div class="video-meta">
+                                    <span>Время: 18:30</span>
+                                    <span>Просмотры: 18.2K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Видео 3 -->
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #3742fa, #5352ed); display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center; color: white; padding: 20px;">
+                                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                        <div>Сравнение</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Сравнение: оригинальная vs 4missVape</h3>
+                                <p class="video-description">Наглядное сравнение оригинальной прошивки Vaporesso и кастомной 4missVape. Скорость отклика, точность и дополнительные функции.</p>
+                                <div class="video-meta">
+                                    <span>Время: 15:20</span>
+                                    <span>Просмотры: 32.1K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Видео 4 -->
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #ffa502, #ffb142); display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center; color: white; padding: 20px;">
+                                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                        <div>Решение проблем</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Решение проблем с прошивкой</h3>
+                                <p class="video-description">Частые проблемы при установке и использовании прошивки и их решения. Восстановление оригинальной прошивки, проблемы с драйверами.</p>
+                                <div class="video-meta">
+                                    <span>Время: 22:10</span>
+                                    <span>Просмотры: 12.8K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Видео 5 -->
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #9b59b6, #8e44ad); display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center; color: white; padding: 20px;">
+                                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                        <div>Настройка температуры</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Точная настройка TC режима</h3>
+                                <p class="video-description">Как правильно настроить режим контроля температуры для разных материалов. Калибровка, TCR значения, советы по использованию.</p>
+                                <div class="video-meta">
+                                    <span>Время: 14:35</span>
+                                    <span>Просмотры: 9.7K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Видео 6 -->
+                        <div class="video-item">
+                            <div class="video-thumbnail">
+                                <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #00d2d3, #54a0ff); display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center; color: white; padding: 20px;">
+                                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                        <div>Секретные функции</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Секретные функции и пасхалки</h3>
+                                <p class="video-description">Скрытые функции прошивки 4missVape, которые не описаны в инструкции. Комбинации клавиш, скрытые меню и пасхалки от разработчиков.</p>
+                                <div class="video-meta">
+                                    <span>Время: 11:50</span>
+                                    <span>Просмотры: 28.4K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Темы оформления -->
+            <div id="themes" class="gallery-tab-content" style="display: none;">
+                <h2 class="section-title">Темы <span class="highlight">оформления</span></h2>
+                <p style="text-align: center; color: var(--gray-color); margin-bottom: 30px;">
+                    Различные темы оформления для персонализации интерфейса прошивки
+                </p>
+                
+                <div class="theme-showcase">
+                    <!-- Тема 1 -->
+                    <div class="theme-item">
+                        <div class="theme-header">
+                            <h3>Тема: Matrix (Зеленая)</h3>
+                            <p style="color: var(--gray-color); font-size: 0.95rem;">Классическая зеленая тема в стиле "Матрицы"</p>
+                        </div>
+                        <div class="theme-preview">
+                            <div class="theme-screenshots">
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #000, #002200); display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #00ff00; font-family: 'Roboto Mono', monospace; text-align: center;">
+                                            <div>MATRIX</div>
+                                            <div>65W | 0.25Ω</div>
+                                            <div>GREEN MODE</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #001100, #000); display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #00ff00; font-family: 'Roboto Mono', monospace; text-align: center;">
+                                            <div>SETTINGS</div>
+                                            <div>BRIGHT: 80%</div>
+                                            <div>LANG: EN</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theme-features">
+                                <ul>
+                                    <li>Зеленый монохромный интерфейс</li>
+                                    <li>Эффекты "цифрового дождя" в меню</li>
+                                    <li>Оптимизировано для ночного использования</li>
+                                    <li>Низкое энергопотребление дисплея</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Тема 2 -->
+                    <div class="theme-item">
+                        <div class="theme-header">
+                            <h3>Тема: Cyberpunk (Неон)</h3>
+                            <p style="color: var(--gray-color); font-size: 0.95rem;">Яркая неоновая тема в стиле киберпанк</p>
+                        </div>
+                        <div class="theme-preview">
+                            <div class="theme-screenshots">
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #0a0a2a, #220022); display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #ff00ff; font-family: 'Roboto Mono', monospace; text-align: center;">
+                                            <div style="color: #00ffff;">CYBERPUNK</div>
+                                            <div>85W | 0.18Ω</div>
+                                            <div style="color: #ff00ff;">NEON MODE</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1a0a2a, #0a0a1a); display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #00ffff; font-family: 'Roboto Mono', monospace; text-align: center;">
+                                            <div style="color: #ff00ff;">SETTINGS</div>
+                                            <div>BRIGHT: 100%</div>
+                                            <div>EFFECTS: ON</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theme-features">
+                                <ul>
+                                    <li>Розово-голубая неоновая палитра</li>
+                                    <li>Анимированные переходы между меню</li>
+                                    <li>Глитч-эффекты при смене режимов</li>
+                                    <li>Яркий и контрастный интерфейс</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Тема 3 -->
+                    <div class="theme-item">
+                        <div class="theme-header">
+                            <h3>Тема: Minimal (Минимализм)</h3>
+                            <p style="color: var(--gray-color); font-size: 0.95rem;">Чистая минималистичная тема с акцентами</p>
+                        </div>
+                        <div class="theme-preview">
+                            <div class="theme-screenshots">
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #ffffff; font-family: 'Roboto Mono', monospace; text-align: center;">
+                                            <div style="color: #ff4757;">65W</div>
+                                            <div>0.25Ω</div>
+                                            <div>3.45V</div>
+                                            <div style="font-size: 0.8rem;">POWER</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2a2a2a, #1a1a1a); display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #ffffff; font-family: 'Roboto Mono', monospace; text-align: center;">
+                                            <div style="color: #2ed573;">TC 220°C</div>
+                                            <div>SS316L</div>
+                                            <div>45W</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theme-features">
+                                <ul>
+                                    <li>Черно-белая основа с цветными акцентами</li>
+                                    <li>Минимальное количество элементов</li>
+                                    <li>Четкие контуры и читаемый шрифт</li>
+                                    <li>Быстрая работа на слабом железе</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Тема 4 -->
+                    <div class="theme-item">
+                        <div class="theme-header">
+                            <h3>Тема: Retro (Ретро)</h3>
+                            <p style="color: var(--gray-color); font-size: 0.95rem;">Стилизация под старые монохромные дисплеи</p>
+                        </div>
+                        <div class="theme-preview">
+                            <div class="theme-screenshots">
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #ffff00; font-family: 'Courier New', monospace; text-align: center;">
+                                            <div>*4missVape*</div>
+                                            <div>PWR:065W</div>
+                                            <div>RES:0.25Ω</div>
+                                            <div>VOL:3.45V</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="theme-screenshot">
+                                    <div style="width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center;">
+                                        <div style="color: #ffff00; font-family: 'Courier New', monospace; text-align: center;">
+                                            <div>*SETTINGS*</div>
+                                            <div>BRT:■■■■□□</div>
+                                            <div>TMR:010S</div>
+                                            <div>CLR:YELLOW</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theme-features">
+                                <ul>
+                                    <li>Имитация зеленых/желтых ЭЛТ мониторов</li>
+                                    <li>Пиксельный шрифт в стиле 80-х</li>
+                                    <li>Эффект "разогрева" при включении</li>
+                                    <li>Статические помехи в фоне</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для изображений -->
+            <div id="imageModal" class="modal">
+                <span class="close-modal">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div id="modalCaption" class="modal-caption"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>4missVape</h3>
+                    <p>Кастомная прошивка для вейп-устройств с дисплеем ILI9341. Улучшите возможности вашего устройства!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="../index.html">Главная</a></li>
+                        <li><a href="download.html">Скачать прошивку</a></li>
+                        <li><a href="instructions.html">Инструкция</a></li>
+                        <li><a href="gallery.html">Галерея</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> support@4missvape.ru</li>
+                        <li><i class="fas fa-comments"></i> Telegram-чат</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Использование на ваш риск</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 4missVape Project. Все права защищены. This site is not affiliated with any vape manufacturers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Переключение вкладок галереи
+        document.addEventListener('DOMContentLoaded', function() {
+            // Функция для переключения вкладок
+            function switchTab(tabName) {
+                // Скрываем все вкладки
+                document.querySelectorAll('.gallery-tab-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                // Показываем выбранную вкладку
+                document.getElementById(tabName).style.display = 'block';
+                
+                // Обновляем активные кнопки
+                document.querySelectorAll('.gallery-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // Добавляем класс active к текущей кнопке
+                document.querySelector(`.gallery-tab[data-tab="${tabName}"]`).classList.add('active');
+            }
+            
+            // Назначаем обработчики на кнопки вкладок
+            document.querySelectorAll('.gallery-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    switchTab(tabName);
+                });
+            });
+            
+            // Инициализируем первую вкладку
+            switchTab('screenshots');
+            
+            // Модальное окно для изображений
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('modalCaption');
+            const closeModal = document.querySelector('.close-modal');
+            
+            // Закрытие модального окна
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Закрытие при клике вне изображения
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Обработка нажатия клавиши Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Для видео-превью добавляем обработчики
+            document.querySelectorAll('.play-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const videoItem = this.closest('.video-item');
+                    const title = videoItem.querySelector('.video-title').textContent;
+                    alert(`В реальном сайте здесь будет открываться видео: ${title}\n\nПока что это демонстрация. В реальном проекте можно подключить YouTube Player API.`);
+                });
+            });
+            
+            // Анимация при скролле для карточек галереи
+            const galleryObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            // Наблюдаем за элементами галереи
+            document.querySelectorAll('.gallery-item, .device-card, .video-item, .theme-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                galleryObserver.observe(item);
+            });
+            
+            // Плавное появление элементов при загрузке
+            setTimeout(() => {
+                document.querySelectorAll('.gallery-item, .device-card, .video-item, .theme-item').forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
