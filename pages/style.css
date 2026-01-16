@@ -1,0 +1,116 @@
+/* Стили для страницы загрузки */
+.download-hero {
+    padding: 150px 0 50px;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--darker-color), var(--dark-color));
+}
+
+.download-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-color);
+    margin-top: 20px;
+}
+
+.download-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.download-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s;
+}
+
+.download-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+}
+
+.download-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.download-header h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.version-badge {
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.version-badge.legacy {
+    background-color: var(--gray-color);
+}
+
+.version-badge.tool {
+    background-color: #3498db;
+}
+
+.download-info {
+    margin-bottom: 20px;
+}
+
+.download-info p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.download-info i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px;
+}
+
+.download-size {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.download-warning {
+    background-color: rgba(255, 71, 87, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 25px;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+.download-warning h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.download-warning h3 i {
+    margin-right: 10px;
+}
+
+.download-warning p {
+    margin-bottom: 10px;
+    color: var(--gray-color);
+}
