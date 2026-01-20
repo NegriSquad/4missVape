@@ -8,6 +8,165 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+    <!-- Добавьте перед закрывающим тегом body -->
+<div id="chat-container" style="
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  z-index: 999;
+  border: 1px solid #e5e7eb;
+">
+  <!-- Заголовок чата -->
+  <div style="
+    padding: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    font-weight: bold;
+  ">
+    🤖 AI Assistant
+    <button id="close-chat" style="
+      float: right;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    ">✕</button>
+  </div>
+  
+  <!-- История сообщений -->
+  <div id="chat-messages" style="
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    font-size: 14px;
+  ">
+    <div style="
+      background: #f3f4f6;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    ">
+      Привет! Я ваш помощник по вейпингу. Чем могу помочь?
+    </div>
+  </div>
+  
+  <!-- Поле ввода -->
+  <div style="padding: 16px; border-top: 1px solid #e5e7eb;">
+    <div style="display: flex; gap: 8px;">
+      <input 
+        id="chat-input" 
+        type="text" 
+        placeholder="Задайте вопрос..." 
+        style="
+          flex: 1;
+          padding: 10px;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          outline: none;
+        "
+      >
+      <button 
+        id="send-message" 
+        style="
+          background: #10a37f;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          padding: 0 16px;
+          cursor: pointer;
+        "
+      >
+        Отправить
+      </button>
+    </div>
+  </div>
+</div>
+
+<button 
+  id="chat-button" 
+  style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transition: transform 0.2s;
+  "
+  onmouseover="this.style.transform='scale(1.1)'"
+  onmouseout="this.style.transform='scale(1)'"
+>
+  🤖
+</button>
+
+<script>
+  const chatButton = document.getElementById('chat-button');
+  const chatContainer = document.getElementById('chat-container');
+  const closeButton = document.getElementById('close-chat');
+  const sendButton = document.getElementById('send-message');
+  const chatInput = document.getElementById('chat-input');
+  const chatMessages = document.getElementById('chat-messages');
+  
+  // Открыть/закрыть чат
+  chatButton.addEventListener('click', () => {
+    chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
+  });
+  
+  closeButton.addEventListener('click', () => {
+    chatContainer.style.display = 'none';
+  });
+  
+  // Отправка сообщения (заглушка)
+  sendButton.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+  
+  function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+    
+    // Добавить сообщение пользователя
+    addMessage(message, 'user');
+    chatInput.value = '';
+    
+    // Здесь будет API-вызов к ИИ
+    setTimeout(() => {
+      addMessage('Это демо-версия. Подключите OpenAI API для реальных ответов.', 'bot');
+    }, 500);
+  }
+  
+  function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.style.cssText = `
+      background: ${sender === 'user' ? '#3b82f6' : '#f3f4f6'};
+      color: ${sender === 'user' ? 'white' : 'black'};
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      align-self: ${sender === 'user' ? 'flex-end' : 'flex-start'};
+      max-width: 80%;
+    `;
+    messageDiv.textContent = text;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+</script>
 <body>
     <!-- Шапка сайта -->
     <header>
